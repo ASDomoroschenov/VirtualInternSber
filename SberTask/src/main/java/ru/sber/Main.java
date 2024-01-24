@@ -1,7 +1,10 @@
 package ru.sber;
 
+import ru.sber.service.CityService;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        CityService service = new CityService();
+        service.outputListCityFromCSV(Main.class.getClassLoader().getResource("test.csv").getPath());
     }
 }
