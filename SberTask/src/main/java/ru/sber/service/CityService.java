@@ -7,6 +7,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -50,6 +51,17 @@ public class CityService {
     }
 
     public void sortedByName(String fileNameCSV) {
+        List<City> cityList = getListCityFromCSV(fileNameCSV);
+        cityList.sort(Comparator.comparing(city -> city.getName().toLowerCase()));
+
+        for (City city : cityList) {
+            System.out.println(city);
+        }
+    }
+
+    public void sortedByDistrictAndName(String fileNameCSV) {
+        List<City> cityList = getListCityFromCSV(fileNameCSV);
+
 
     }
 }
