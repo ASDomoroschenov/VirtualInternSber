@@ -6,10 +6,7 @@ import ru.sber.City;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 @Slf4j
 public class CityService {
@@ -79,5 +76,15 @@ public class CityService {
         }
 
         return indexCityWithBiggestPopulation;
+    }
+
+    public Map<String, Integer> getCountCityByRegion() {
+        Map<String, Integer> mapRegion = new HashMap<>();
+
+        for (City city : cityList) {
+            mapRegion.put(city.getRegion(), mapRegion.getOrDefault(city.getRegion(), 0) + 1);
+        }
+
+        return mapRegion;
     }
 }
