@@ -6,10 +6,21 @@ import ru.sber.City;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 @Slf4j
 public class CityService {
+    private final List<City> cityList;
+    private final String fileNameCSV;
+
+    public CityService(String fileNameCSV) {
+        cityList = new ArrayList<>();
+        this.fileNameCSV = fileNameCSV;
+        getListCityFromCSV();
+    }
+
     private City getCity(String line) {
         Scanner scanner = new Scanner(line);
         City city = new City();
@@ -29,16 +40,23 @@ public class CityService {
         return city;
     }
 
-    public void outputListCityFromCSV(String fileNameCSV) {
+    private void getListCityFromCSV() {
         try (BufferedReader reader = new BufferedReader(new FileReader(fileNameCSV))) {
             String line = null;
 
             while ((line = reader.readLine()) != null) {
-                System.out.println(getCity(line));
+                City city = getCity(line);
+                cityList.add(city);
             }
 
         } catch (IOException | NumberFormatException e) {
             log.error("Ошибка во время чтения или создания файла", e.getStackTrace());
+        }
+    }
+
+    public void outputListCity() {
+        for (City city : cityList) {
+            System.out.println(city);
         }
     }
 }
