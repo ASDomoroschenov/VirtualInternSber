@@ -13,6 +13,15 @@ import java.util.Scanner;
 
 @Slf4j
 public class CityService {
+    private final List<City> cityList;
+    private final String fileNameCSV;
+
+    public CityService(String fileNameCSV) {
+        cityList = new ArrayList<>();
+        this.fileNameCSV = fileNameCSV;
+        getListCityFromCSV();
+    }
+
     private City getCity(String line) {
         Scanner scanner = new Scanner(line);
         City city = new City();
@@ -32,9 +41,7 @@ public class CityService {
         return city;
     }
 
-    public List<City> getListCityFromCSV(String fileNameCSV) {
-        List<City> cityList = new ArrayList<>();
-
+    private void getListCityFromCSV() {
         try (BufferedReader reader = new BufferedReader(new FileReader(fileNameCSV))) {
             String line = null;
 
@@ -46,22 +53,19 @@ public class CityService {
         } catch (IOException | NumberFormatException e) {
             log.error("Ошибка во время чтения или создания файла", e.getStackTrace());
         }
-
-        return cityList;
     }
 
-    public void sortedByName(String fileNameCSV) {
-        List<City> cityList = getListCityFromCSV(fileNameCSV);
-        cityList.sort(Comparator.comparing(city -> city.getName().toLowerCase()));
-
+    public void outputListCity() {
         for (City city : cityList) {
             System.out.println(city);
         }
     }
 
-    public void sortedByDistrictAndName(String fileNameCSV) {
-        List<City> cityList = getListCityFromCSV(fileNameCSV);
+    public void sortByName() {
+        cityList.sort(Comparator.comparing(city -> city.getName().toLowerCase()));
+    }
 
-
+    public void sortByDistrictAndName() {
+        cityList.sort(Comparator.comparing(City::getDistrict).thenComparing(City::getName));
     }
 }

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10377ed4-93db-4483-8935-e3ca8dddae83" name="Changes" comment="Add City class">
+    <list default="true" id="10377ed4-93db-4483-8935-e3ca8dddae83" name="Changes" comment="Task1 finish">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/sber/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/sber/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/sber/service/CityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/sber/service/CityService.java" afterDir="false" />
