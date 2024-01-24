@@ -52,32 +52,6 @@ public class CityService {
         }
     }
 
-    public void outputListCity() {
-        for (City city : cityList) {
-            System.out.println(city);
-        }
-    }
-
-    public void sortByName() {
-        cityList.sort(Comparator.comparing(city -> city.getName().toLowerCase()));
-    }
-
-    public void sortByDistrictAndName() {
-        cityList.sort(Comparator.comparing(City::getDistrict).thenComparing(City::getName));
-    }
-
-    public int getIndexCityWithBiggestPopulation() {
-        int indexCityWithBiggestPopulation = 0;
-
-        for (int i = 1; i < cityList.size(); i++) {
-            if (cityList.get(indexCityWithBiggestPopulation).getPopulation() < cityList.get(i).getPopulation()) {
-                indexCityWithBiggestPopulation = i;
-            }
-        }
-
-        return indexCityWithBiggestPopulation;
-    }
-
     public Map<String, Integer> getCountCityByRegion() {
         Map<String, Integer> mapRegion = new HashMap<>();
 
